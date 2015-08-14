@@ -4,7 +4,27 @@ package hotel;
 public class Main {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        int pisos = 5;
+        int habitaciones = 10;
+        Hotel hotel = new Hotel(pisos, habitaciones);
+        
+        Aleatorio ale = new Aleatorio();
+        
+        for (int i = 0; i < pisos * habitaciones; i++) {
+            Huesped hues = new Huesped();
+            hues.setNombre(ale.randomStringNom());
+            hues.setTipoServicio(ale.randomIntTipoServicio());
+            hues.setDiasHospedaje(ale.randomIntDias());
+            hues.setCiudad(ale.randomIntCiudad());
+            hues.setImporte(ale.randomIntImporte());
+            hotel.setHuesped(hues);
+        }
+        
+        System.out.println(hotel.toString());
+        System.out.println("Huesped Mayor importe de Rosario(1):");
+        System.out.println(hotel.huespedMayorImporte(1));
+        System.out.println("Ingresos de huespedes con Pension Completa (0)");
+        System.out.println(hotel.importeTotalPorServicio(0));
     }
 
 }
